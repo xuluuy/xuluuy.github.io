@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            margin: 150px auto;
+            position: relative;
+            transition:5s all ease; 
+            transform: perspective(700px) rotateX(0deg) rotateY(0deg); 
+            transform-style: preserve-3d; /* 子元素脱离父元素 类似于桌子上盖照片的玻璃，把玻璃拿开 */
+        }
+        .box div {width:198px; height:198px; border:1px solid black; position:absolute; 
+        left:0; top:0; background:rgba(0,255,0,0.5)}
+        .box:active {transform: perspective(700px) rotateX(360deg) rotateY(180deg);}
+        .box div.front{
+            transform: translateZ(100px);
+        }
+        .box div.back{
+            transform: translateZ(-100px);
+        }
+        .box div.left{
+            transform: rotateY(-90deg) translateZ(100px) ;
+        }
+        .box div.right{
+            transform: rotateY(90deg) translateZ(100px) ;
+        }
+        .box div.top{
+            transform: rotateX(90deg) translateZ(100px) ;
+        }
+        .box div.down{
+            transform: rotateX(-90deg) translateZ(100px) ;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="front">前</div>
+        <div class="back">后</div>
+        <div class="top">上</div>
+        <div class="down">下</div>
+        <div class="left">左</div>
+        <div class="right">右</div>
+    </div>
+</body>
+</html>
