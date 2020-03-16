@@ -1,0 +1,255 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+body,html{
+    width: 100%;
+    height: 100%; 
+}
+.loading{
+    width: 100%;
+    height: 100%; 
+    background-color: #d65976;
+    color: #fff;
+     /* 用css3的方法设置居中 #db4d6d */
+     display: flex;
+     /* 水平居中 不知道子集使用 */
+     justify-content: center;
+     /* 垂直居中 不知道子集使用*/
+     align-items: center;
+}
+.loading h2{
+    transform: translate(15px,10px);
+}
+.monster{
+    width: 100px;
+    height: 90px;
+    border-radius: 20px;
+    background-color: #e55a54;
+    margin: 10px;
+    display: flex;
+    /* 水平居中 不知道子集使用 */
+    justify-content: center;
+    align-items: center;
+    /* 设置垂直排列 */
+    flex-direction: column;
+    box-shadow: 0 7px 20px rgba(0, 0, 0,0.2);
+    position: relative;
+    /* 添加动画  animation: 动画名 执行时间 执行次数 交替*/
+    animation: jumping 0.8s infinite alternate;
+}
+.monster .eye{
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 10px;
+    display: flex;
+    /* 水平居中 不知道子集使用 */
+    justify-content: center;
+    align-items: center;
+}
+.monster .eye .eyeBall{
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    background-color: #0c4475;
+    animation: eyemove 1.6s infinite alternate;
+}
+.monster .mouth{
+    width: 32%;
+    height: 12px;
+    border-radius: 12px;
+    background-color: #fff;
+}
+.monster::before,.monster::after{
+    position: absolute;
+    content: "";
+    display: block;
+    width: 20%;
+    height: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    top: -10px;
+    left: 50%;
+}
+.monster::before{
+    /* 平移旋转 */
+    transform: translateX(-70%) rotate(45deg);
+}
+.monster::after{
+    transform: translateX(-30%) rotate(-45deg);
+}
+.monster.blue{
+    background-color: #0c4475;
+    /* 延迟动画 */
+    animation-delay: 0.8s;
+}
+.monster.blue .eyeBall,.monster.blue .mouth{
+    background-color: #e55a54;
+}
+@keyframes jumping{
+    50%{
+        top: 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0,0.2);
+    }
+    100%{
+        top: -50px;
+        box-shadow: 0 120px 20px rgba(0, 0, 0,0.1);
+    }
+}
+@keyframes eyemove{
+    0%,20%{
+        transform: translateX(-50%);
+    }
+    90%,100%{
+        transform: translateX(50%);
+    }
+}
+.movie{
+    background:url("../img/bg2.jpg") repeat fixed;
+    width: 100%;
+    overflow: hidden;
+      
+}
+
+.movie h1{
+    margin-top: 50px;
+    margin-left: 60px;
+    color: white
+}
+.movie hr{
+    width: 80%;
+    margin: 5px auto;
+    color: rgba(0, 0, 0,0.1);
+}
+.content{
+    width:70%;
+    margin:15px auto; 
+    /*弹性布局*/
+    display: flex;
+    /*方向*/
+    flex-direction: row;/* 可以理解成float:left. */
+    flex-wrap: wrap;
+}
+.content > .item{
+    flex:1; /*弹性项的占比*/
+    margin: 17px;
+}
+.content > .item > .box {
+    width:100%;
+    border: 6px solid white;
+    margin-top: 10px;
+    transition:all 0.3s ease-in-out;
+    overflow: hidden;
+    background: white;
+    animation: change 0.5s;
+   
+}
+@keyframes change{
+    from {opacity: .1;}
+    to {opacity: 1;}
+}
+.content > .item > .box > .describe{
+    background: white;
+    font-size: 12px;
+}
+.content > .item > .box > .describe > .movieTitle{
+    font-weight: bold;
+}
+.content > .item > .box > .describe > .movieTitle .year{
+    color: #999;
+    font-weight: normal;
+}
+.content > .item > .box > img{
+    width:100%;
+}
+
+.content > .item > .box:hover{
+    cursor: pointer;
+    transform: scale(1.05);/*变大1.1倍*/
+    box-shadow: 0px 3px 2px 1px #999;
+}
+.stars-outer {
+    position: relative;
+    display: inline-block;
+    margin-right: 3px;
+  }
+  
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+  }
+  
+  .stars-outer::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #ccc;
+  }
+  
+  .stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #f8ce0b;
+  }
+
+  .wrapper {
+    text-align: center;
+}
+.wrapper .line {
+    width: 40%;
+    display: inline-block;
+    border: 0.4px solid #ddd;
+    vertical-align: middle;
+}
+.wrapper .footer {
+    color: #ccc;
+    font-size: 14px;
+}
+.top{
+    background: url("../img/icon-go-up.png");
+    position: fixed;
+    right: 5%;
+    bottom: 10px;
+    z-index: 9;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background: rgba(102,102,102,.7) url(../img/icon-go-up.png) center no-repeat;
+    cursor: pointer;
+}
+nav{
+    width:100%;
+    height:30px;
+   background:rgb(0, 78, 124);
+   display: flex;
+   flex-direction:row
+}
+
+nav ul li{
+    padding:5px 10px;
+    float:left;
+    list-style:none;
+    color:#ffffff;
+    font-size:15px;
+    cursor: pointer;
+
+}
+#nav li a{
+    text-decoration:none;
+}
+nav ul li:hover{
+    background:rgba(255, 255, 255, 0.2)
+}
+.active{
+    background:rgba(255, 255, 255, 0.2)
+}
+.movie .panel{display: none;}
