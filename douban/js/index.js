@@ -13,10 +13,10 @@ var p = 0;
 var total = [];
 var flag= [false,false,false];
 window.onload =function(){   
-    setTimeout(() => {
+    /*setTimeout(() => {
         $(".loading").hide();
         $(".movie").show();
-    }, 2000); 
+    }, 2000); */
    new TabSwitch();
    init()
    //监听滚动事件,防抖
